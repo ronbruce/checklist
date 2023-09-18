@@ -2,17 +2,20 @@ print("Captain Rainbow's Color Checklist")
 
 checklist = list()
 
+
 def create(item):
     checklist.append(item)
 
+"""
 def read(index):
     item = checklist[index]
     return item
+"""
 
-
-
+""" 
 def update(index, item):
     checklist[index] = item
+"""
 
 def destroy(index):
     checklist.pop(index)
@@ -44,20 +47,34 @@ def mark_completed(index):
 
 def select(function_code):
     #Create item
-    if function_code == "C":
+    if function_code == "C".lower():
         input_item = user_input("Input item: ")
         create(input_item)
     
 
-    elif function_code == "R":
+    elif function_code == "R".lower():
         item_index = user_input("Index number? ")
+       # I completed the task of catching errors
+       # TO DO:
+       # Get the value of the index with the item instead of just printing it.
+       # What I tried:
+       # passing looping through checklist
+       # I was able to display all the objects in an array form
+       # However, I only want one item based on the index i type in. 
 
-        read(item_index)
+        try:
 
-    elif function_code == "P":
+            print(item_index)
+        except: 
+            print("An error occured")
+            read(item_index)
+            
+           
+
+    elif function_code == "P".lower():
         list_all_items()
     
-    elif function_code == "Q":
+    elif function_code == "Q".lower():
         return False
      
     else:
@@ -67,6 +84,17 @@ def select(function_code):
 def user_input(prompt):
     user_input = input(prompt)
     return user_input
+
+def read(index):
+    item = checklist[index]
+    return item
+
+def update(index, item):
+    checklist[index] = item
+
+def destroy(index):
+    checklist.pop(index)
+
 
 
 def test():
